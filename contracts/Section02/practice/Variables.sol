@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.17;
 
-/** 
+/**
  * @title 変数 を学ぼう
  * Solidityには、3種類の変数がある
  * - 状態変数(State Variables)
@@ -11,12 +11,15 @@ pragma solidity ^0.8.17;
  */
 contract Variables {
     // 状態変数 : コントラクトのストレージ領域に格納される変数(SSD/HDDへの永続的な保管イメージ)
+    uint256 num = 1;
 
+    // a_はローカル変数 : データ保持期間は関数終了まで(memoryへの一時的な保管イメージ)
+    function add(uint256 a_) public view returns (uint256) {
+        return num + a_;
+    }
 
-
-        // a_はローカル変数 : データ保持期間は関数終了まで(memoryへの一時的な保管イメージ)
-
-
-        //グローバル変数 : トランザクションやブロックチェーンのプロパティに関する情報を保持する特別な変数 
-
+    //グローバル変数 : トランザクションやブロックチェーンのプロパティに関する情報を保持する特別な変数
+    function getBlockTimeStamp() public view returns (uint256) {
+        return block.timestamp;
+    }
 }
